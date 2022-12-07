@@ -12,7 +12,11 @@ spring:
   config:
     import:
       optional:configserver:http://localhost:8888
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
 management:
   endpoints:
     web:
@@ -24,3 +28,10 @@ management:
     health:
       show-details: always
       enabled: true
+      
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
