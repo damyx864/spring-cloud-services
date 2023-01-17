@@ -1,0 +1,19 @@
+server:
+  port: 8081
+  
+spring:
+  application:
+    name: kk-api-resource
+  security:
+    oauth2:
+      resourceserver:
+          jwt:
+            jwk-set-uri: http://localhost:8080/realms/auth-s2s/protocol/openid-connect/certs
+          
+logging:
+  level:
+    root: INFO
+    dev.demo: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
