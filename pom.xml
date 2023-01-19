@@ -13,6 +13,8 @@
         <module>auth-server</module>
         <module>client-one</module>
         <module>client-two</module>
+        <module>sec-auth-kk-api-client</module>
+        <module>sec-auth-kk-api-resource</module>
     </modules>
 
     <properties>
