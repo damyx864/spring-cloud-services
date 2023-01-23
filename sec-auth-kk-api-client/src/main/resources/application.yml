@@ -1,0 +1,39 @@
+server:
+  port: 8082
+  error:
+    include-message: always
+
+secured-service-url : localhost:8083/secure1
+
+default-registration-client-id: keycloak
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: kk-api-client
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            provider: keycloak
+            #see: http://keycloak-IP:8080/realms/[auth-s2s]/.well-known/openid-configuration
+            #token_endpoint_auth_methods_supported:
+            #[private_key_jwt client_secret_basic client_secret_post tls_client_auth client_secret_jwt]
+            client-id: auth-s2s-client
+            client-secret: wGojhVJUs7D29t6Fu4MiVTQHYEKY85Co
+            authorization-grant-type: client_credentials
+            scope: openid, roles
+        provider:
+          keycloak:
+            token-uri: http://localhost:8080/realms/auth-s2s/protocol/openid-connect/token
+            jwk-set-uri: http://localhost:8080/realms/auth-s2s/protocol/openid-connect/certs
+
+logging:
+  level:
+    root: INFO
+    dev.demo: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
